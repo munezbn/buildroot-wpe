@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WPEWEBKIT_VERSION = 2.22.2
+WPEWEBKIT_VERSION = 2.24.1
 WPEWEBKIT_SITE = https://www.wpewebkit.org/releases
 WPEWEBKIT_SOURCE = wpewebkit-$(WPEWEBKIT_VERSION).tar.xz
 WPEWEBKIT_INSTALL_STAGING = YES
@@ -94,6 +94,14 @@ WPEWEBKIT_DEPENDENCIES += woff2
 else
 WPEWEBKIT_CONF_OPTS += -DUSE_WOFF2=OFF
 endif
+
+ifeq ($(BR2_PACKAGE_OPENJPEG),y)
+WPEWEBKIT_CONF_OPTS += -DUSE_OPENJPEG=ON
+WPEWEBKIT_DEPENDENCIES += openjpeg
+else
+WPEWEBKIT_CONF_OPTS += -DUSE_OPENJPEG=OFF
+endif
+
 
 define WPEWEBKIT_BUILD_JSC
 	$(WPEWEBKIT_MAKE_ENV) $(WPEWEBKIT_MAKE) -C $(@D) jsc

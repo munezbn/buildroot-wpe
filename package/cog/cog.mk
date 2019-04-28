@@ -4,8 +4,9 @@
 #
 ################################################################################
 
-COG_VERSION = 063df115456a24e464d1e6f284df22a0e65aea8e
-COG_SITE = $(call github,Igalia,cog,$(COG_VERSION))
+COG_VERSION = 0.3.0
+COG_SITE = https://github.com/Igalia/cog/releases/download/v$(COG_VERSION)
+COG_SOURCE = cog-$(COG_VERSION).tar.xz
 COG_DEPENDENCIES = libglib2 libwpe wpewebkit
 COG_LICENSE = MIT
 COG_LICENSE_FILES = COPYING
